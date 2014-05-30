@@ -19,9 +19,53 @@ function addinfo(parsed,packager){ // Tao them thong tin tra ve
 }
 console.log(new Date());
 
+var save = [];
+
+console.log("----------------------------- STARTTTTTTTTTTTTTTTTT   ----------------------------");
+var info = {
+  '0':'0100',
+  '1':'722020810E508002',
+  '2':'4254464000000003',
+  '3':'000000',
+  '4':'000000005000',
+  '7':'0703114141',
+  '11':'003776',
+  '19':'458',
+  '25':'00',
+  '32':'465886',
+  '37':'818511003776',
+  '38':'013847',
+  '39':'00',
+  '42':'000150140002167',
+  '44':'5',
+  '49':'458',
+  '63':'8000000002',
+};
+console.log("Par input= " + util.inspect(info));
+//var msg = iso.pack(parsed);
+var msg = iso.pack(info);
+console.log("Input packed = " + msg);
+console.log("DONE   !!!");
+
+save.push(msg);
+
+//  UNPACK
+console.log("UNPACK   !!!");
+console.log("ORG = " + msg);
+var parsed = iso.unpack(msg);
+console.log("Par =>>>>>>>> " + util.inspect(addinfo(parsed,packager)));
+//console.log("Par = " + util.inspect(parsed));
+//var iso = new ISO(packager);
+console.log("Parse complete >>" + msg + " <<\n");
+
+save.push(msg);
+
+console.log("----------------------------- FFFF0000000000000   ----------------------------");
 
 
-// err in bitmap
+
+
+// Done bitmap
 var info = {
   '0' : '0100',
   '1' : 'F66064810870A0120000000000000004',
@@ -52,6 +96,8 @@ console.log("Par input= " + util.inspect(info));
 //var msg = iso.pack(parsed);
 var msg = iso.pack(info);
 console.log("Input packed = " + msg);
+
+save.push(msg);
 console.log("DONE   !!!");
 
 
@@ -63,8 +109,8 @@ console.log("Par =>>>>>>>> " + util.inspect(addinfo(parsed,packager)));
 //console.log("Par = " + util.inspect(parsed));
 //var iso = new ISO(packager);
 console.log("Parse complete >>" + msg + " <<\n");
-
-console.log("------------ 1111111111   -------------");
+save.push(msg);
+console.log("----------------------------- 1111111111   ----------------------------");
 
 
 
@@ -77,6 +123,7 @@ var parsed = iso.unpack(msg);
 console.log("Par =>>>>>>>> " + util.inspect(addinfo(parsed,packager)));
 //console.log("Par = " + util.inspect(parsed));
 //var iso = new ISO(packager);
+save.push(msg);
 console.log("Parse complete >>" + msg + " <<\n");
 
 // Xu ly chen noi dung
@@ -100,7 +147,16 @@ console.log("Par input= " + util.inspect(info));
 //var msg = iso.pack(parsed);
 var msg = iso.pack(info);
 console.log("Input packed = " + msg);
+save.push(msg);
 console.log("DONE   !!!");
+
+console.log("----------------------------- 22222222222222222   ----------------------------");
+// DONE
+
+
+console.log('SAVE = ',  util.inspect(save) );
+
+console.log("----------------------------- EEEEEEEEEEEEEEE   ----------------------------");
 
 
 
