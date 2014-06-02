@@ -1,35 +1,33 @@
-'use strict';
+//'use strict';
 
-// App Module: the name AngularStore matches the ng-app attribute in the main <html> tag
-// the route provides parses the URL and injects the appropriate partial page
-var storeApp = angular.module('AngularStore', []).
-  config(['$routeProvider', function($routeProvider) {
+// App Module
+var storeApp = angular.module('AngularStore', ['ngRoute']).
+  config(['$routeProvider', function($routeProvider) { // chuyen trang
   $routeProvider.
       when('/store', {
         templateUrl: 'partials/store.htm',
-        controller: storeController 
+        controller: 'storeController'
       }).
       when('/products/:productSku', {
         templateUrl: 'partials/product.htm',
-        controller: storeController
+        controller: 'storeController',
       }).
       when('/cart', {
         templateUrl: 'partials/shoppingCart.htm',
-        controller: storeController
+        controller: 'storeController',
       }).
       otherwise({
         redirectTo: '/store'
       });
 }]);
 
-// create a data service that provides a store and a shopping cart that
-// will be shared by all views (instead of creating fresh ones for each view).
+// tạo DataService đễ xử lý dữ liệu cart trong tất cả View
 storeApp.factory("DataService", function () {
 
-    // create store
+    // tạo store
     var myStore = new store();
 
-    // create shopping cart
+    // tạo shopping cart
     var myCart = new shoppingCart("AngularStore");
 
     // enable PayPal checkout
@@ -38,6 +36,7 @@ storeApp.factory("DataService", function () {
     // PayPal. You can do that here:
     // https://www.paypal.com/webapps/mpp/merchant
     myCart.addCheckoutParameters("PayPal", "paypaluser@youremail.com");
+  
 
     // enable Google Wallet checkout
     // note: the second parameter identifies the merchant; in order to use the 
