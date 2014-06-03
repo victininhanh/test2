@@ -1,15 +1,15 @@
-﻿//----------------------------------------------------------------
+//----------------------------------------------------------------
 // product class
 function product(sku, name, description, price, cal, carot, vitc, folate, potassium, fiber) {
-    this.sku = sku; // product code (SKU = stock keeping unit)
+    this.sku = sku; // ma san pham (SKU = stock keeping unit)
     this.name = name;
     this.description = description;
     this.price = price;
-    this.cal = cal;
-    this.nutrients = {
-        "Carotenoid": carot,
+    this.cal = cal; // Calories
+    this.nutrients = { 
+        "Sắc tố": carot, 
         "Vitamin C": vitc,
-        "Folates": folate,
+        "Acid amin (Vitamin nhóm B)": folate,
         "Potassium": potassium,
         "Fiber": fiber
     };

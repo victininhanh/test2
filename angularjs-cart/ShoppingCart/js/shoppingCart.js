@@ -1,4 +1,4 @@
-﻿//----------------------------------------------------------------
+//----------------------------------------------------------------
 // shopping cart
 //
 function shoppingCart(cartName) {
@@ -7,10 +7,10 @@ function shoppingCart(cartName) {
     this.checkoutParameters = {};
     this.items = [];
 
-    // load items from local storage when initializing
+    // Khởi tạo và lấy từ local storage 
     this.loadItems();
 
-    // save items to local storage when unloading
+    // Lưu items vào local storage khi  unload
     var self = this;
     $(window).unload(function () {
         if (self.clearCart) {
@@ -21,7 +21,7 @@ function shoppingCart(cartName) {
     });
 }
 
-// load items from local storage
+// load items vào  local storage
 shoppingCart.prototype.loadItems = function () {
     var items = localStorage != null ? localStorage[this.cartName + "_items"] : null;
     if (items != null && JSON != null) {
@@ -41,19 +41,19 @@ shoppingCart.prototype.loadItems = function () {
     }
 }
 
-// save items to local storage
+// Lưu items vào local storage
 shoppingCart.prototype.saveItems = function () {
     if (localStorage != null && JSON != null) {
         localStorage[this.cartName + "_items"] = JSON.stringify(this.items);
     }
 }
 
-// adds an item to the cart
+// Thêm 1 item vào cart
 shoppingCart.prototype.addItem = function (sku, name, price, quantity) {
     quantity = this.toNumber(quantity);
     if (quantity != 0) {
 
-        // update quantity for existing item
+        // Thêm số lượng cho item đã tồn tại
         var found = false;
         for (var i = 0; i < this.items.length && !found; i++) {
             var item = this.items[i];
@@ -66,7 +66,7 @@ shoppingCart.prototype.addItem = function (sku, name, price, quantity) {
             }
         }
 
-        // new item, add now
+        // Tạo mới item, thêm now
         if (!found) {
             var item = new cartItem(sku, name, price, quantity);
             this.items.push(item);

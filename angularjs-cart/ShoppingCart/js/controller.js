@@ -1,15 +1,15 @@
-﻿'use strict';
+//'use strict';
 
-// the storeController contains two objects:
-// - store: contains the product list
-// - cart: the shopping cart object
+// storeController 
+// - store: danh sách sản phẩm
+// - cart: cart
 function storeController($scope, $routeParams, DataService) {
 
-    // get store and cart from service
+    // lấy từ service
     $scope.store = DataService.store;
     $scope.cart = DataService.cart;
 
-    // use routing to pick the selected product
+    // dùng routing để lấy product được chọn
     if ($routeParams.productSku != null) {
         $scope.product = $scope.store.getProduct($routeParams.productSku);
     }

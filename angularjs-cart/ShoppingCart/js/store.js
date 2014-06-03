@@ -9,6 +9,8 @@
 // 3: 20-40% DV
 // 4: above 40% DV
 //
+// Ma san pham  /  Ten / Mieu ta / Gia / Cal / Diem 
+
 function store() {
     this.products = [
         new product("APL", "Apple", "Eat one every day to keep the doctor away!", 12, 90, 0, 2, 0, 1, 2),
