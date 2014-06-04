@@ -11,3 +11,13 @@
 .table-nonfluid {
    width: auto;
 }
+.product-store {
+    max-width:100px;
+    height:auto;
+    overflow:hidden;
+}
+.product-details {
+    max-width:150px;
+    height:auto;
+    overflow:hidden;
+}

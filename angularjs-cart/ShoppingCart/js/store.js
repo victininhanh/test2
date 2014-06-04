@@ -13,6 +13,7 @@
 
 function store() {
     this.products = [
+        new product("A1", "Angel", "Thiên thần bay quanh bạn!", 30000, 90, 0, 2, 0, 1, 2),
         new product("APL", "Apple", "Eat one every day to keep the doctor away!", 12, 90, 0, 2, 0, 1, 2),
         new product("AVC", "Avocado", "Guacamole anyone?", 16, 90, 0, 1, 1, 1, 2),
         new product("BAN", "Banana", "These are rich in Potassium and easy to peel.", 4, 120, 0, 2, 1, 2, 2),
