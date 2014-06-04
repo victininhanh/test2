@@ -1,4 +1,4 @@
-﻿//----------------------------------------------------------------
+//----------------------------------------------------------------
 // store (contains the products)
 //
 // NOTE: nutritional info from http://www.cspinet.org/images/fruitcha.jpg
@@ -37,13 +37,13 @@ function store() {
     ];
     this.dvaCaption = [
         "Negligible",
-        "Low",
-        "Average",
-        "Good",
-        "Great"
+        "Thấp",
+        "Trung Bình ",
+        "Tốt",
+        "Tuyệt"
     ];
     this.dvaRange = [
-        "below 5%",
+        "nhỏ hơn 5%",
         "between 5 and 10%",
         "between 10 and 20%",
         "between 20 and 40%",

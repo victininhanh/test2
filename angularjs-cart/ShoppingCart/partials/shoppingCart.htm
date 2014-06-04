@@ -1,7 +1,6 @@
 ﻿<p class="text-info">
-    Thanks for shopping at the Angular Store.<br />
-    This is your shopping cart. Here you can edit the items, 
-    go back to the store, clear the cart, or check out.
+    Cảm ơn bạn đã mua sắm.<br />
+    Vui lòng kiểm tra giỏ hàng và chọn chức năng mong muốn.
 </p>
 
 <div class="container-fluid">
@@ -13,16 +12,16 @@
 
                 <!-- header -->
                 <tr class="well">
-                    <td><b>Item</b></td>
-                    <td class="tdCenter"><b>Quantity</b></td>
-                    <td class="tdRight"><b>Price</b></td>
+                    <td><b>Món hàng</b></td>
+                    <td class="tdCenter"><b>Số lượng</b></td>
+                    <td class="tdRight"><b>Giá</b></td>
                     <td />
                 </tr>
 
                 <!-- empty cart message -->
                 <tr ng-hide="cart.getTotalCount() > 0" >
                     <td class="tdCenter" colspan="4">
-                        Your cart is empty.
+                        Giỏ hàng của bạn rỗng.
                     </td>
                 </tr>
 
@@ -56,7 +55,7 @@
 
                 <!-- footer -->
                 <tr class="well">
-                    <td><b>Total</b></td>
+                    <td><b>Tông cộng</b></td>
                     <td class="tdCenter"><b>{{cart.getTotalCount()}}</b></td>
                     <td class="tdRight"><b>{{cart.getTotalPrice() | currency}}</b></td>
                     <td />
@@ -70,13 +69,13 @@
                 <button 
                     class="btn btn-block" 
                     onclick="window.location.href='default.htm'">
-                    <i class="icon-chevron-left" /> back to store
+                    <i class="icon-chevron-left" /> Quay lại trang chủ
                 </button>
                 <button 
                     class="btn btn-block btn-danger" 
                     ng-click="cart.clearItems()" 
                     ng-disabled="cart.getTotalCount() < 1" >
-                    <i class="icon-trash icon-white" /> clear cart
+                    <i class="icon-trash icon-white" /> Xóa giỏ hàng
                 </button>
             </p>
 
@@ -87,19 +86,19 @@
                     class="btn btn-block btn-primary"
                     ng-click="cart.checkout('PayPal')"
                     ng-disabled="cart.getTotalCount() < 1">
-                    <i class="icon-ok icon-white" /> check out using PayPal
+                    <i class="icon-ok icon-white" />  Thanh toán bằng PayPal
                 </button>
                 <button 
                     class="btn btn-block btn-primary" 
                     ng-click="cart.checkout('Google')" 
                     ng-disabled="cart.getTotalCount() < 1">
-                    <i class="icon-ok icon-white" /> check out using Google
+                    <i class="icon-ok icon-white" /> Thanh toán bằng Google
                 </button>
                 <button 
                     class="btn btn-block btn-primary" 
                     ng-click="cart.checkout('Stripe')" 
                     ng-disabled="cart.getTotalCount() < 1">
-                    <i class="icon-ok icon-white" /> check out using Stripe
+                    <i class="icon-ok icon-white" /> Thanh toán bằng Stripe
                 </button>
             </p>
                 <!-- Stripe needs a form to post to -->
@@ -118,7 +117,7 @@
                     class="btn btn-block btn-link" 
                     ng-click="cart.checkout('Google')" 
                     ng-disabled="cart.getTotalCount() < 1" >
-                    <img src="https://checkout.google.com/buttons/checkout.gif?w=168&h=44&style=white&variant=text" alt="checkoutGoogle"/>
+                    <!--<img src="https://checkout.google.com/seller/images/checkout_buttons_samples.png" alt="checkoutGoogle"/> -->
                 </button>    
             </p>
         </div>

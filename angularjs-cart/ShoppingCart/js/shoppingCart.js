@@ -21,7 +21,7 @@ function shoppingCart(cartName) {
     });
 }
 
-// load items vào  local storage
+// lấy items vào  local storage
 shoppingCart.prototype.loadItems = function () {
     var items = localStorage != null ? localStorage[this.cartName + "_items"] : null;
     if (items != null && JSON != null) {
@@ -36,7 +36,7 @@ shoppingCart.prototype.loadItems = function () {
             }
         }
         catch (err) {
-            // ignore errors while loading...
+            // bỏ qua lỗi
         }
     }
 }
@@ -72,12 +72,12 @@ shoppingCart.prototype.addItem = function (sku, name, price, quantity) {
             this.items.push(item);
         }
 
-        // save changes
+        // lưu thay đổi
         this.saveItems();
     }
 }
 
-// get the total price for all items currently in the cart
+// tính tổng giá cho cart
 shoppingCart.prototype.getTotalPrice = function (sku) {
     var total = 0;
     for (var i = 0; i < this.items.length; i++) {
@@ -89,7 +89,7 @@ shoppingCart.prototype.getTotalPrice = function (sku) {
     return total;
 }
 
-// get the total price for all items currently in the cart
+// tính tổng số lượng trong cart
 shoppingCart.prototype.getTotalCount = function (sku) {
     var count = 0;
     for (var i = 0; i < this.items.length; i++) {
@@ -101,16 +101,16 @@ shoppingCart.prototype.getTotalCount = function (sku) {
     return count;
 }
 
-// clear the cart
+// xóa cart
 shoppingCart.prototype.clearItems = function () {
     this.items = [];
     this.saveItems();
 }
 
-// define checkout parameters
+// xử lý tham số check out
 shoppingCart.prototype.addCheckoutParameters = function (serviceName, merchantID, options) {
 
-    // check parameters
+    // kiểm tra tham số
     if (serviceName != "PayPal" && serviceName != "Google" && serviceName != "Stripe") {
         throw "serviceName must be 'PayPal' or 'Google' or 'Stripe'.";
     }
@@ -118,14 +118,14 @@ shoppingCart.prototype.addCheckoutParameters = function (serviceName, merchantID
         throw "A merchantID is required in order to checkout.";
     }
 
-    // save parameters
+    // lưu tham số
     this.checkoutParameters[serviceName] = new checkoutParameters(serviceName, merchantID, options);
 }
 
 // check out
 shoppingCart.prototype.checkout = function (serviceName, clearCart) {
 
-    // select serviceName if we have to
+    // lấy serviceName 
     if (serviceName == null) {
         var p = this.checkoutParameters[Object.keys(this.checkoutParameters)[0]];
         serviceName = p.serviceName;
@@ -136,7 +136,7 @@ shoppingCart.prototype.checkout = function (serviceName, clearCart) {
         throw "Use the 'addCheckoutParameters' method to define at least one checkout service.";
     }
 
-    // go to work
+    // thực thi
     var parms = this.checkoutParameters[serviceName];
     if (parms == null) {
         throw "Cannot get checkout parameters for '" + serviceName + "'.";
@@ -156,8 +156,7 @@ shoppingCart.prototype.checkout = function (serviceName, clearCart) {
     }
 }
 
-// check out using PayPal
-// for details see:
+// check out bằng PayPal
 // www.paypal.com/cgi-bin/webscr?cmd=p/pdn/howto_checkout-outside
 shoppingCart.prototype.checkoutPayPal = function (parms, clearCart) {
 
@@ -195,8 +194,7 @@ shoppingCart.prototype.checkoutPayPal = function (parms, clearCart) {
     form.remove();
 }
 
-// check out using Google Wallet
-// for details see:
+// check out = Google Wallet
 // developers.google.com/checkout/developer/Google_Checkout_Custom_Cart_How_To_HTML
 // developers.google.com/checkout/developer/interactive_demo
 shoppingCart.prototype.checkoutGoogle = function (parms, clearCart) {
@@ -233,8 +231,7 @@ shoppingCart.prototype.checkoutGoogle = function (parms, clearCart) {
     form.remove();
 }
 
-// check out using Stripe
-// for details see:
+// check out = Stripe
 // https://stripe.com/docs/checkout
 shoppingCart.prototype.checkoutStripe = function (parms, clearCart) {
 
