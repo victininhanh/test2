@@ -1,19 +1,19 @@
 ﻿<p class="text-info">
-    Welcome to the Angular Store.<br />
-    Please select the products you want and add them to your shopping cart.<br />
-    When you are done, click the shopping cart icon to review your order and check out.
+    Chào mừng bạn đến với cửa hàng.<br />
+    Vui lòng tham khảo mặt hàng mong muốn bên dưới.<br />
+   Sau khi xem hoàn tất, bạn hãy nhấn vào giỏ hàng để xem và thanh toán.
 </p>
 
 <p>
-    Search: <input ng-model="search">
+    Tìm mặt hàng: <input ng-model="search">
 </p>
 
 <table class="table table-bordered">
     <tr class="well">
         <td class="tdRight" colspan="4" >
-            <a href="default.htm#/cart" title="go to shopping cart" ng-disabled="cart.getTotalCount() < 1">
+            <a href="default.htm#/cart" title="Đi đến giỏ hàng" ng-disabled="cart.getTotalCount() < 1">
                 <i class="icon-shopping-cart" />
-                <b>{{cart.getTotalCount()}}</b> items, <b>{{cart.getTotalPrice() | currency}}</b>
+                <b>{{cart.getTotalCount()}}</b> mặt hàng, <b>Tổng giá: {{cart.getTotalPrice()}} VNĐ</b>
             </a>
         </td>
     </tr>
@@ -24,19 +24,19 @@
             {{product.description}}
         </td>
         <td class="tdRight">
-            {{product.price | currency}}
+            {{product.price}} VNĐ
         </td>
         <td class="tdCenter">
             <a href="" ng-click="cart.addItem(product.sku, product.name, product.price, 1)">
-                add to cart
+                Thêm vào giỏ hàng
             </a>
         </td>
     </tr>
     <tr class="well">
         <td class="tdRight" colspan="4">
-            <a href="default.htm#/cart" title="go to shopping cart" ng-disabled="cart.getTotalCount() < 1">
+            <a href="default.htm#/cart" title="Đi đến giỏ hàng" ng-disabled="cart.getTotalCount() < 1">
                 <i class="icon-shopping-cart" />
-                <b>{{cart.getTotalCount()}}</b> items, <b>{{cart.getTotalPrice() | currency}}</b>
+                <b>{{cart.getTotalCount()}}</b> mặt hàng, <b>{{cart.getTotalPrice() | currency}}</b>
             </a>
         </td>
     </tr>
