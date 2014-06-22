@@ -22,5 +22,19 @@
     overflow:hidden;
 }
 .banner{
-  background-color : rgb(198, 248, 244);  
+  background-color : rgb(201, 248, 220); /*rgb(198, 248, 244);  */
+}
+footer {
+  color: #666;
+  /*background: rgb(201, 248, 220); 
+  #222;
+  background:#222;*/
+  padding: 17px 0 18px 0;
+  /* border-top: 1px solid #000; */
+}
+footer a {
+  color: #999;
+}
+footer a:hover {
+  color: #efefef;
 }
