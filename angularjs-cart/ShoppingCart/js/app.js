@@ -1,7 +1,7 @@
 //'use strict';
 
 // App Module
-var storeApp = angular.module('AngularStore', ['ngRoute']).
+var storeApp = angular.module('AngularStore', ['ngRoute','routeStyles']).
   config(['$routeProvider', function($routeProvider) { // chuyen trang
   $routeProvider.
       when('/store', {
@@ -19,6 +19,7 @@ var storeApp = angular.module('AngularStore', ['ngRoute']).
       when('/card', {
         templateUrl: 'partials/card.htm',
         controller: 'cardController',
+        css: ['css/card.css'],
       }).
       otherwise({
         redirectTo: '/store'

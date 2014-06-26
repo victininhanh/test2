@@ -1,59 +1,20 @@
-<!DOCTYPE html>
-<html>
 
   
-<head>
+
+  <!--
+  <!DOCTYPE html>
+  <html>
+  <head>
   <script src="//code.jquery.com/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.payment/1.0.2/jquery.payment.js"></script>
   <link href="//getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"/>
   <script src="//getbootstrap.com/dist/js/bootstrap.js"></script>
-  <script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
-
-<style id="jsbin-css">
-#ngayhethan{
-  float: clear;
-}
-.container-full {
-  margin: 0 auto;
-  width: 100%;
-  min-height:100%;
-  /*background-color:#110022;
-  color:#eee;*/
-  overflow:hidden;
-}
-/*
-.container-full a {
-  color:#efefef;
-  text-decoration:none;
-}
-*/
-.v-center {
-  margin-top:7%;
-  margin-left:7%;
-  margin-right:5%;
-}
+  </head>
+  <body>
+  -->
 
 
 
-/* Mac dinh*/
-input.invalid {
-  border: 2px solid red;
-}
 
-.validation.failed:after {
-  color: red;
-  content: 'Thông tin nhập sai';
-}
-
-.validation.passed:after {
-  color: green;
-  content: 'Thông tin chinh xác. Vui lòng chờ xử lý';
-}
-
-</style>
-</head>
-<body>
 <div class="container-full">
   <div class="row col-lg-12 v-center">
   <form novalidate autocomplete="on">
@@ -95,35 +56,51 @@ input.invalid {
   </form>
   </div>
 </div>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.payment/1.0.2/jquery.payment.js"></script>
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"/>
+  
+  <script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
+
+
 <script>
-$('[data-numeric]').payment('restrictNumeric');
-$('.cc-number').payment('formatCardNumber');
-$('.cc-exp').payment('formatCardExpiry');
-$('.cc-cvc').payment('formatCardCVC');
+$(function() {
+// Handler for .ready() called.
+  /*  
+  $('[data-numeric]').payment('restrictNumeric');
+  $('.cc-number').payment('formatCardNumber');
+  $('.cc-exp').payment('formatCardExpiry');
+  $('.cc-cvc').payment('formatCardCVC');
 
-$("#sothe").val('4539 6647 8973 5862');
-$("#ngayhethan").val('9/2017');
-$("#macvv").val('378');
-$("#sotien").val('5000000');
+  $("#sothe").val('4539 6647 8973 5862');
+  $("#ngayhethan").val('9/2017');
+  $("#macvv").val('378');
+  $("#sotien").val('5000000');
 
 
-$('form').submit(function(e){
-  e.preventDefault();
-  $('input').removeClass('invalid');
-  $('.validation').removeClass('passed failed');
+  $('form').submit(function(e){
+    e.preventDefault();
+    $('input').removeClass('invalid');
+    $('.validation').removeClass('passed failed');
 
-  var cardType = $.payment.cardType($('.cc-number').val());
+    var cardType = $.payment.cardType($('.cc-number').val());
 
-  $('.cc-number').toggleClass('invalid', !$.payment.validateCardNumber($('.cc-number').val()));
-  $('.cc-exp').toggleClass('invalid', !$.payment.validateCardExpiry($('.cc-exp').payment('cardExpiryVal')));
-  $('.cc-cvc').toggleClass('invalid', !$.payment.validateCardCVC($('.cc-cvc').val(), cardType));
+    $('.cc-number').toggleClass('invalid', !$.payment.validateCardNumber($('.cc-number').val()));
+    $('.cc-exp').toggleClass('invalid', !$.payment.validateCardExpiry($('.cc-exp').payment('cardExpiryVal')));
+    $('.cc-cvc').toggleClass('invalid', !$.payment.validateCardCVC($('.cc-cvc').val(), cardType));
 
-  if ( $('input.invalid').length ) {
-    $('.validation').addClass('failed');
-  } else {
-    $('.validation').addClass('passed');
-  }
+    if ( $('input.invalid').length ) {
+      $('.validation').addClass('failed');
+    } else {
+      $('.validation').addClass('passed');
+    }
+  });
+  */
 });
+
 </script>
+<!--
 </body>
 </html>
+-->
