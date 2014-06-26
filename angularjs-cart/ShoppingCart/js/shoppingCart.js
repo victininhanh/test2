@@ -151,10 +151,18 @@ shoppingCart.prototype.checkout = function (serviceName, clearCart) {
         case "Stripe":
             this.checkoutStripe(parms, clearCart);
             break;
+        case "CreditCard":
+            this.checkoutCreditCard(parms, clearCart);
+            break;
         default:
             throw "Unknown checkout service: " + parms.serviceName;
     }
 }
+
+shoppingCart.prototype.checkoutCreditCard = function (parms, clearCart) {
+    this.clearCart = clearCart == null || clearCart;
+}
+
 
 // check out bằng PayPal
 // www.paypal.com/cgi-bin/webscr?cmd=p/pdn/howto_checkout-outside
