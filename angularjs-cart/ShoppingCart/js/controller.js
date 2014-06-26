@@ -14,3 +14,7 @@ function storeController($scope, $routeParams, DataService) {
         $scope.product = $scope.store.getProduct($routeParams.productSku);
     }
 }
+
+function cardController($scope, $routeParams){
+  
+}

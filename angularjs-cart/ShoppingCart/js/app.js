@@ -16,6 +16,10 @@ var storeApp = angular.module('AngularStore', ['ngRoute']).
         templateUrl: 'partials/shoppingCart.htm',
         controller: 'storeController',
       }).
+      when('/card', {
+        templateUrl: 'partials/card.htm',
+        controller: 'cardController',
+      }).
       otherwise({
         redirectTo: '/store'
       });

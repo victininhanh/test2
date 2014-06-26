@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+  
+<head>
+  <script src="//code.jquery.com/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.payment/1.0.2/jquery.payment.js"></script>
+  <link href="//getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"/>
+  <script src="//getbootstrap.com/dist/js/bootstrap.js"></script>
+  <script src="https://cdn.firebase.com/js/client/1.0.15/firebase.js"></script>
+
+<style id="jsbin-css">
+#ngayhethan{
+  float: clear;
+}
+.container-full {
+  margin: 0 auto;
+  width: 100%;
+  min-height:100%;
+  /*background-color:#110022;
+  color:#eee;*/
+  overflow:hidden;
+}
+/*
+.container-full a {
+  color:#efefef;
+  text-decoration:none;
+}
+*/
+.v-center {
+  margin-top:7%;
+  margin-left:7%;
+  margin-right:5%;
+}
+
+
+
+/* Mac dinh*/
+input.invalid {
+  border: 2px solid red;
+}
+
+.validation.failed:after {
+  color: red;
+  content: 'Thông tin nhập sai';
+}
+
+.validation.passed:after {
+  color: green;
+  content: 'Thông tin chinh xác. Vui lòng chờ xử lý';
+}
+
+</style>
+</head>
+<body>
+<div class="container-full">
+  <div class="row col-lg-12 v-center">
+  <form novalidate autocomplete="on">
+    <h2>Thanh toán bằng thẻ tín dụng</h2>
+    <div class="form-group">
+    <label for="sothe" class="col-sm-3 control-label">Số thẻ</label>
+      <div class="col-sm-9">
+        <input id="sothe" type="text" class="cc-number form-control" pattern="\d*" x-autocompletetype="cc-number" placeholder="Số thẻ" required>
+      </div>
+    </div>
+    <div class="form-group">
+    <label for="ngayhethan" class="col-sm-3 control-label">Ngày hết hạn</label>
+      <div class="col-sm-9">
+        <input id="ngayhethan" type="text" class="cc-exp form-control" pattern="\d*" x-autocompletetype="cc-exp" placeholder="Expires MM/YY" required maxlength="9">
+      </div>
+    </div>
+    
+    <div class="form-group">
+    <label for="macvv" class="col-sm-3 control-label">Mã CVC</label>
+      <div class="col-sm-9">
+        <input id="macvv" class="cc-cvc form-control" pattern="\d*" x-autocompletetype="cc-csc" placeholder="Security code" required  autocomplete="off">
+      </div>
+    </div>
+    <div class="form-group">
+    <label for="sotien" class="col-sm-3 control-label">Số tiền</label>
+      <div class="col-sm-9">
+        <input id="sotien" class="form-control" placeholder="Số tiền" data-numeric>
+      </div>
+    </div>
+    <label class="validation"></label>
+    <div class="form-group">
+      
+      <button type="submit" class="col-sm-6 btn btn-default" id="subbtn">Hoàn tất</button>
+      <button type="reset" class="col-sm-6 btn btn-default" id="resetbtn">Nhập lại</button>
+    </div>
+    
+
+    
+  </form>
+  </div>
+</div>
+<script>
+$('[data-numeric]').payment('restrictNumeric');
+$('.cc-number').payment('formatCardNumber');
+$('.cc-exp').payment('formatCardExpiry');
+$('.cc-cvc').payment('formatCardCVC');
+
+$("#sothe").val('4539 6647 8973 5862');
+$("#ngayhethan").val('9/2017');
+$("#macvv").val('378');
+$("#sotien").val('5000000');
+
+
+$('form').submit(function(e){
+  e.preventDefault();
+  $('input').removeClass('invalid');
+  $('.validation').removeClass('passed failed');
+
+  var cardType = $.payment.cardType($('.cc-number').val());
+
+  $('.cc-number').toggleClass('invalid', !$.payment.validateCardNumber($('.cc-number').val()));
+  $('.cc-exp').toggleClass('invalid', !$.payment.validateCardExpiry($('.cc-exp').payment('cardExpiryVal')));
+  $('.cc-cvc').toggleClass('invalid', !$.payment.validateCardCVC($('.cc-cvc').val(), cardType));
+
+  if ( $('input.invalid').length ) {
+    $('.validation').addClass('failed');
+  } else {
+    $('.validation').addClass('passed');
+  }
+});
+</script>
+</body>
+</html>
