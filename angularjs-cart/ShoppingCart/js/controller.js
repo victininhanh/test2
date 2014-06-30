@@ -18,8 +18,20 @@ function storeController($scope, $routeParams, DataService) {
 function cardController($scope, $routeParams){
   $scope.$on('$viewContentLoaded', function () 
  {
-   console.log("View complete");
-   // javascript code here
+   jQuery.loadScript = function (url, callback) {
+    jQuery.ajax({
+        url: url,
+        dataType: 'script',
+        success: callback,
+        async: true
+    });
+    }
+   
+ $.loadScript('//cdnjs.cloudflare.com/ajax/libs/jquery.payment/1.0.2/jquery.payment.js', function(){
+    $.loadScript('//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js', function(){
+    //Stuff to do after someScript has loaded
+      
+      // javascript code here
   $('[data-numeric]').payment('restrictNumeric');
   $('.cc-number').payment('formatCardNumber');
   $('.cc-exp').payment('formatCardExpiry');
@@ -49,4 +61,15 @@ function cardController($scope, $routeParams){
     }
   });
  });
+
+      
+       console.log("View complete");    
+  });
+});
+ 
+  
+  
+   
+  
+   
 }
