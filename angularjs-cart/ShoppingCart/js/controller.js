@@ -18,7 +18,7 @@ function storeController($scope, $routeParams, DataService) {
 function cardController($scope, $routeParams, DataService){
   $scope.store = DataService.store;
   $scope.cart = DataService.cart;
-  console.log("$store",$scope.store, "cart",  $scope.cart);
+  //console.log("$store",$scope.store, "cart",  $scope.cart);
   $scope.$on('$viewContentLoaded', function () 
  {
    jQuery.loadScript = function (url, callback) {
@@ -43,7 +43,7 @@ function cardController($scope, $routeParams, DataService){
   $("#sothe").val('4539 6647 8973 5862');
   $("#ngayhethan").val('9/2017');
   $("#macvv").val('378');
-  $("#sotien").val('5000000');
+  $("#sotien").val($scope.cart.getTotalPrice());
 
 
   $('form').submit(function(e){
@@ -71,6 +71,17 @@ function cardController($scope, $routeParams, DataService){
        info.ngayhethan = $("#ngayhethan").val();
        info.macvv = $("#macvv").val();
        info.sotien = $("#sotien").val();
+       data = {};
+       for (var i = 0; i < $scope.cart.items.length; i++) {
+          var item = $scope.cart.items[i];
+          var ctr = i + 1;
+          data["item_name_" + ctr] = item.sku;
+          data["item_description_" + ctr] = item.name;
+          data["item_price_" + ctr] = item.price.toFixed(2);
+          data["item_quantity_" + ctr] = item.quantity;
+       }
+       info.cart = data;
+
       db.push(info, function (){
         console.log("Done Nhan");
       });
