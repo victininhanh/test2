@@ -2,6 +2,9 @@ var ISO = require('iso8583').ISO8583;
 var packager = require('iso8583').defaultPackager;
 var iso = new ISO(packager);
 var util = require('util');
+var Firebase = require('firebase');
+var db = new Firebase('https://dbsim.firebaseio.com/iso');
+//myRootRef.set("hello world!");
 
 function addinfo(parsed,packager){ // Tao them thong tin tra ve
   var res ={};
@@ -41,7 +44,8 @@ var info = {
   '49':'458',
   '63':'8000000002',
 };
-console.log("Par input= " + util.inspect(info));
+
+//console.log("Par input= " + util.inspect(info));
 //var msg = iso.pack(parsed);
 var msg = iso.pack(info);
 console.log("Input packed = " + msg);
