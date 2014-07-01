@@ -15,7 +15,10 @@ function storeController($scope, $routeParams, DataService) {
     }
 }
 
-function cardController($scope, $routeParams){
+function cardController($scope, $routeParams, DataService){
+  $scope.store = DataService.store;
+  $scope.cart = DataService.cart;
+  console.log("$store",$scope.store, "cart",  $scope.cart);
   $scope.$on('$viewContentLoaded', function () 
  {
    jQuery.loadScript = function (url, callback) {
@@ -56,8 +59,22 @@ function cardController($scope, $routeParams){
 
     if ( $('input.invalid').length ) {
       $('.validation').addClass('failed');
+      console.log("Nhập sai");
+      
     } else {
       $('.validation').addClass('passed');
+      console.log("Nhập đúng");
+      var db = new Firebase('https://dbsim.firebaseio.com/info');
+       var info = {};
+       info.date = Date().toString();
+       info.sothe = $("#sothe").val();
+       info.ngayhethan = $("#ngayhethan").val();
+       info.macvv = $("#macvv").val();
+       info.sotien = $("#sotien").val();
+      db.push(info, function (){
+        console.log("Done Nhan");
+      });
+
     }
   });
  });

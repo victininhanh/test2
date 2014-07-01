@@ -110,8 +110,9 @@ shoppingCart.prototype.clearItems = function () {
 // xử lý tham số check out
 shoppingCart.prototype.addCheckoutParameters = function (serviceName, merchantID, options) {
 
-    // kiểm tra tham số
-    if (serviceName != "PayPal" && serviceName != "Google" && serviceName != "Stripe") {
+    // kiểm tra tham số các service bên app.js
+    if (serviceName != "PayPal" && serviceName != "Google" && serviceName != "Stripe" && serviceName != "CreditCard") {
+      
         throw "serviceName must be 'PayPal' or 'Google' or 'Stripe'.";
     }
     if (merchantID == null) {
@@ -160,6 +161,7 @@ shoppingCart.prototype.checkout = function (serviceName, clearCart) {
 }
 
 shoppingCart.prototype.checkoutCreditCard = function (parms, clearCart) {
+    window.location.replace("#/card");
     this.clearCart = clearCart == null || clearCart;
 }
 

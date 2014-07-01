@@ -69,7 +69,14 @@ storeApp.factory("DataService", function () {
             chargeurl: "https://localhost:1234/processStripe.aspx"
         }
     );
-
+    // Xu ly The Tin Dung
+    myCart.addCheckoutParameters("CreditCard", "pk_test_xxxx",
+        {
+            chargeurl: "#"
+        }
+    );
+  
+  
     // return data object with store and cart
     return {
         store: myStore,
